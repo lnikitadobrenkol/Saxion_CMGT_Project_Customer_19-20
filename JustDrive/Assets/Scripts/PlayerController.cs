@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -58,13 +56,13 @@ public class PlayerController : MonoBehaviour
     {
         if (hit.point.z > transform.position.z + playerController.radius)
         {
-           // Death();
+            Death();
         }
     }
 
-   /* private void Death()
+    private void Death()
     {
         isDead = true;
-        GetComponent<Сomplexity>().OnDeath();
-    }*/
+        GetComponent<ScoreAndComlexityController>().OnDeath();
+    }
 }
