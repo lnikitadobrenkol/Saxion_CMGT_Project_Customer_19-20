@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class ScoreAndComlexityController : MonoBehaviour
 {
     public Text scoreText;
-    //public DeathMenuController deathMenu;
+    public DeathMenuController deathMenu;
 
     private float score = 0.0f;
 
@@ -45,6 +45,6 @@ public class ScoreAndComlexityController : MonoBehaviour
     public void OnDeath()
     {
         isDead = true;
-        //deathMenu.ToggleEndMenu(score);
+        deathMenu.ToggleEndMenu(score);
     }
 }
