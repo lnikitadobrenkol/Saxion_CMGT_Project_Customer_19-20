@@ -45,6 +45,12 @@ public class ScoreAndComlexityController : MonoBehaviour
     public void OnDeath()
     {
         isDead = true;
+
+        if (PlayerPrefs.GetFloat("Highscore") < score)
+        {
+            PlayerPrefs.SetFloat("Highscore", score);
+        }
+
         deathMenu.ToggleEndMenu(score);
     }
 }
