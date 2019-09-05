@@ -41,6 +41,6 @@ public class DeathMenuController : MonoBehaviour
 
     public void ToMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenuScene");
     }
 }

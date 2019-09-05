@@ -10,12 +10,14 @@ public class PlayerController : MonoBehaviour
 
     private float verticalVelocity = 0.0f;
     private float gravity = 12.0f;
+    private float startTime;
 
     private bool isDead = false;
 
     void Start()
     {
         playerController = GetComponent<CharacterController>();
+        startTime = Time.time;
     }
     void Update()
     {
@@ -24,7 +26,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        if (Time.time < animationDuration)
+        if (Time.time - startTime < animationDuration)
         {
             playerController.Move(Vector3.forward * speed * Time.deltaTime);
             return;
