@@ -517,6 +517,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 315792735313990099, guid: 27e6e5f1a625a2d4e91e59344e4c3f52,
+        type: 3}
+      propertyPath: trackPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 396279396055049912, guid: c4e5efd309323e34498cbf54dbecd535,
+        type: 3}
+    - target: {fileID: 315792735313990099, guid: 27e6e5f1a625a2d4e91e59344e4c3f52,
+        type: 3}
+      propertyPath: trackPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 396279396055049912, guid: c4e5efd309323e34498cbf54dbecd535,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27e6e5f1a625a2d4e91e59344e4c3f52, type: 3}
 --- !u!1001 &5032726202816480627
@@ -535,6 +547,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7887679435295198225, guid: 236437d2338758b42887c5d6d30f1880,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7654127070415021553, guid: 236437d2338758b42887c5d6d30f1880,
         type: 3}
@@ -604,6 +621,15 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7220748419461337511, guid: 9d167413270846b4cb17cfd2f176d186,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 73068674, guid: 9d167413270846b4cb17cfd2f176d186, type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7220748419461337515, guid: 9d167413270846b4cb17cfd2f176d186,
         type: 3}
@@ -713,16 +739,12 @@ PrefabInstance:
     - target: {fileID: 7220748419440940230, guid: 9d167413270846b4cb17cfd2f176d186,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 1226.5
+      value: 373.5
       objectReference: {fileID: 0}
     - target: {fileID: 7220748419440940230, guid: 9d167413270846b4cb17cfd2f176d186,
         type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: 680
-      objectReference: {fileID: 0}
-    - target: {fileID: 73068674, guid: 9d167413270846b4cb17cfd2f176d186, type: 3}
-      propertyPath: m_Color.a
-      value: 0
+      value: 1570
       objectReference: {fileID: 0}
     - target: {fileID: 1720166456, guid: 9d167413270846b4cb17cfd2f176d186, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
