@@ -5,6 +5,7 @@ public class ScoreAndComlexityController : MonoBehaviour
 {
     public Text scoreText;
     public DeathMenuController deathMenu;
+    public WinMenuController winMenu;
 
     private float score = 0.0f;
 
@@ -13,10 +14,11 @@ public class ScoreAndComlexityController : MonoBehaviour
     private int scoreToNextLevel = 10;
 
     private bool isDead = false;
+    private bool isWin= false;
 
     void Update()
     {
-        if (isDead)
+        if (isDead || isWin)
         {
             return;
         }
@@ -52,5 +54,11 @@ public class ScoreAndComlexityController : MonoBehaviour
         }
 
         deathMenu.ToggleEndMenu(score);
+    }
+
+    public void OnWin()
+    {
+        isWin = true;
+        winMenu.ToggleWinMenu();
     }
 }

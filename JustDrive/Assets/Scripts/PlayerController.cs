@@ -12,7 +12,10 @@ public class PlayerController : MonoBehaviour
     private float gravity = 12.0f;
     private float startTime;
 
+    private float gameDuration = 0.0f;
+
     private bool isDead = false;
+    private bool isWin = false;
 
     void Start()
     {
@@ -21,7 +24,14 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-        if (isDead)
+        gameDuration += Time.deltaTime;
+
+        if (gameDuration >= 10.0f)
+        {
+            Win();
+        }
+
+        if (isDead || isWin)
         {
             return;
         }
@@ -66,5 +76,11 @@ public class PlayerController : MonoBehaviour
     {
         isDead = true;
         GetComponent<ScoreAndComlexityController>().OnDeath();
+    }
+
+    private void Win()
+    {
+        isWin = true;
+        GetComponent<ScoreAndComlexityController>().OnWin();
     }
 }
