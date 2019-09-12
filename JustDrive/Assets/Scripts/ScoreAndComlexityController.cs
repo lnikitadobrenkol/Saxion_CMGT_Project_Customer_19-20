@@ -14,7 +14,6 @@ public class ScoreAndComlexityController : MonoBehaviour
     public float flashSpeed = 5f;                               // The speed the damageImage will fade at.
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);      // The colour the damageImage is set to, to flash.
 
-
     private int difficultyLevel = 1;
    // private int maxDifficultyLevel = 10;
 
@@ -23,6 +22,8 @@ public class ScoreAndComlexityController : MonoBehaviour
 
     private float nextActionTime = 0.0f;
     public float period = 3.0f;
+
+    public GameObject bossMessage;
 
     void Awake()
     {
@@ -35,6 +36,11 @@ public class ScoreAndComlexityController : MonoBehaviour
         {
             nextActionTime += period;
             LevelUp();
+            bossMessage.SetActive(false);
+        }
+        else
+        {
+            bossMessage.SetActive(true);
         }
 
         if (isDead || isWin)
@@ -43,7 +49,6 @@ public class ScoreAndComlexityController : MonoBehaviour
         }
 
         stressImage.color = Color.Lerp(stressImage.color, Color.clear, flashSpeed * Time.deltaTime);
-
     }
 
     void LevelUp()
