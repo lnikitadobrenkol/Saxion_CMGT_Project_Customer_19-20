@@ -12,18 +12,29 @@ public class PlayerController : MonoBehaviour
     private float gravity = 12.0f;
     private float startTime;
 
+    private float gameDuration = 0.0f;
+
     private bool isDead = false;
+    private bool isWin = false;
 
     void Start()
     {
         playerController = GetComponent<CharacterController>();
-        startTime = Time.time;
+        startTime = Time.time; 
     }
+
     void Update()
     {
-        if (isDead)
+        if (isDead || isWin)
         {
             return;
+        }
+
+        gameDuration += Time.deltaTime;
+
+        if (gameDuration >= 10.0f)
+        {
+            Win();
         }
 
         if (Time.time - startTime < animationDuration)
@@ -42,6 +53,7 @@ public class PlayerController : MonoBehaviour
         {
             verticalVelocity -= gravity * Time.deltaTime;
         }
+
         moveVector.x = Input.GetAxisRaw("Horizontal") * speed;
         moveVector.y = verticalVelocity;
         moveVector.z = speed;
@@ -66,5 +78,11 @@ public class PlayerController : MonoBehaviour
     {
         isDead = true;
         GetComponent<ScoreAndComlexityController>().OnDeath();
+    }
+
+    private void Win()
+    {
+        isWin = true;
+        GetComponent<ScoreAndComlexityController>().OnWin();
     }
 }
