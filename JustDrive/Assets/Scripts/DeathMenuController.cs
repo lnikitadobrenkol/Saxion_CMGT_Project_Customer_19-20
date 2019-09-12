@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class DeathMenuController : MonoBehaviour
 {
-    public Text endScore;
     public Image backGroundImg;
 
     private bool isShowned = false;
@@ -27,10 +26,9 @@ public class DeathMenuController : MonoBehaviour
         backGroundImg.color = Color.Lerp(new Color(0, 0, 0, 0), Color.black, transition);
     }
 
-    public void ToggleEndMenu(float score)
+    public void ToggleEndMenu()
     {
         gameObject.SetActive(true);
-        endScore.text = ((int)score).ToString();
         isShowned = true;
     }
 

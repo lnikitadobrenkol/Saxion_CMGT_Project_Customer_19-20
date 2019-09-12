@@ -20,20 +20,21 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerController = GetComponent<CharacterController>();
-        startTime = Time.time;
+        startTime = Time.time; 
     }
+
     void Update()
     {
+        if (isDead || isWin)
+        {
+            return;
+        }
+
         gameDuration += Time.deltaTime;
 
         if (gameDuration >= 10.0f)
         {
             Win();
-        }
-
-        if (isDead || isWin)
-        {
-            return;
         }
 
         if (Time.time - startTime < animationDuration)
@@ -52,6 +53,7 @@ public class PlayerController : MonoBehaviour
         {
             verticalVelocity -= gravity * Time.deltaTime;
         }
+
         moveVector.x = Input.GetAxisRaw("Horizontal") * speed;
         moveVector.y = verticalVelocity;
         moveVector.z = speed;
