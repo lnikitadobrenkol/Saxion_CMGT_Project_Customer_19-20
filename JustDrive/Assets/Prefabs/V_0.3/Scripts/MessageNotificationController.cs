@@ -54,13 +54,10 @@ public class MessageNotificationController : MonoBehaviour
     // Attached to the close button in the message menu
     public void CloseMessageMenu()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
             messageMenu.SetActive(false);
             isMessageMenuOpen = false;
 
             StartCoroutine(Delay(frequencyOfOccurrence)); // I do not want to see notification at once I closed the message menu
-        }
     }
 
     private void ShowNotification()
