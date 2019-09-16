@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class RoadController : MonoBehaviour
 {
-    public GameObject[] roadBlockPrefabs;
+    public GameObject[] roadBlockPrefabs; // What are we going to spawn
 
     private List<GameObject> activeRoadBlocks;
 
-    private Transform playerTransform;
+    private Transform playerTransform; // Where is the player
 
-    private float spawnPoint = -10.0f;
+    private float spawnPoint = -10.0f; // Where exactly prefabs will be spawned 
     private float roadBlocksLength = 10.0f;
     private float safeZone = 15.0f; // Zone where road blocks are not being deleted
 
@@ -31,12 +31,12 @@ public class RoadController : MonoBehaviour
     {
         if (CanRunRoadEngine())
         {
-            SpawnTrack();
-            DeleteTrack();
+            SpawnRoadBlock();
+            DeleteRoadBlock();
         }
     }
 
-    private void SpawnTrack(int prefabIndex = -1)
+    private void SpawnRoadBlock(int prefabIndex = -1)
     {
         GameObject currentTrack;
 
@@ -57,7 +57,7 @@ public class RoadController : MonoBehaviour
         activeRoadBlocks.Add(currentTrack);
     }
 
-    private void DeleteTrack()
+    private void DeleteRoadBlock()
     {
         Destroy(activeRoadBlocks[0]);
         activeRoadBlocks.RemoveAt(0);
@@ -88,11 +88,11 @@ public class RoadController : MonoBehaviour
         {
             if (roadBlocksOnTrack < 2)
             {
-                SpawnTrack(0);
+                SpawnRoadBlock(0);
             }
             else
             {
-                SpawnTrack();
+                SpawnRoadBlock();
             }
         }
     }
