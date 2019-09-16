@@ -12,29 +12,44 @@ public class GameController : MonoBehaviour
     public GameObject roundEndDisplay;
 
     public Text questionDisplayText;
-    public Text scoreDisplayText;
+    public Text distanceDisplayText;
     public Text timeRemainingDisplayText;
+
+    
+    public Slider hornySlider;
+    public float startingHorny = 50.0f;
+    public float currentHorny;
 
     private DataController dataContoller;
     private RoundData currentRoundData;
     private QuestionData[] questionPool;
 
     private bool isRoundActive;
-    private float timeRemaining;
+    //private float timeRemaining;
+    public float roundDistance;
     private int questionIndex;
-    private int playerScore;
 
     private List<GameObject> answerButtonGameObjects = new List<GameObject>();
 
+    
+    void Awake()
+    {
+        currentHorny = startingHorny;
+    }
+
     void Start()
     {
+        CloseMessageMenu();
+
         dataContoller = FindObjectOfType<DataController> ();
         currentRoundData = dataContoller.GetCurrentRoundData ();
         questionPool = currentRoundData.questions;
-        timeRemaining = currentRoundData.timeLimitInSeconds;
-        UpdateTimeRemainingDisplay();
 
-        playerScore = 0;
+        roundDistance = currentRoundData.generalDistance;
+        UpdateDistanceDisplay();
+        //timeRemaining = currentRoundData.timeLimitInSeconds;
+        //UpdateTimeRemainingDisplay();
+
         questionIndex = 0;
 
         ShowQuestion();
@@ -67,17 +82,35 @@ public class GameController : MonoBehaviour
         }
     }
 
+    /*
     private void UpdateTimeRemainingDisplay()
     {
         timeRemainingDisplayText.text = "Time: " + Mathf.Round(timeRemaining).ToString();
+    }
+    */
+
+    private void UpdateDistanceDisplay()
+    {
+        distanceDisplayText.text = "Distance: " + Mathf.Round(roundDistance).ToString();
+    }
+
+    private void HornyUp()
+    {
+        currentHorny += 10;
+        hornySlider.value = currentHorny;
+    }
+
+    private void HornyFall()
+    {
+        currentHorny -= 10;
+        hornySlider.value = currentHorny;
     }
 
     public void AnswerButtonClicked(bool isCorrect)
     {
         if (isCorrect)
         {
-            playerScore += currentRoundData.pointsAddedForCorrectAnswer;
-            scoreDisplayText.text = "Score: " + playerScore.ToString();
+            HornyUp();
         }
 
         if (questionPool.Length > questionIndex + 1)
@@ -87,8 +120,13 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            EndRound();
+            CloseMessageMenu();
         }
+    }
+
+    public void CloseMessageMenu()
+    {
+        questionDisplay.SetActive(false);
     }
 
     public void EndRound()
@@ -106,15 +144,21 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
+        if (hornySlider.value == 0 || roundDistance <= 0.0f)
+        {
+            EndRound();
+        }
+
         if (isRoundActive)
         {
-            timeRemaining -= Time.deltaTime;
-            UpdateTimeRemainingDisplay();
+            currentHorny -= 0.05f;
+            hornySlider.value = currentHorny;
 
-            if (timeRemaining <= 0f)
-            {
-                EndRound();
-            }
+            roundDistance -= Time.deltaTime;
+            UpdateDistanceDisplay();
+
+            //timeRemaining -= Time.deltaTime;
+            //UpdateTimeRemainingDisplay();
         }
     }
 }

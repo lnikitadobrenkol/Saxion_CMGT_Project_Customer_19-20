@@ -8,6 +8,7 @@ public class RoundData
     public string name;
 
     public int timeLimitInSeconds;
+    public int generalDistance;
     public int pointsAddedForCorrectAnswer;
 
     public QuestionData[] questions;
