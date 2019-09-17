@@ -9,13 +9,13 @@ public class RoadController : MonoBehaviour
 
     private Transform playerTransform; // Where is the player
 
-    private float spawnPoint = -10.0f; // Where exactly prefabs will be spawned 
-    private float roadBlocksLength = 10.0f;
-    private float safeZone = 15.0f; // Zone where road blocks are not being deleted
+    private float spawnPoint = -17.0f; // Where exactly prefabs will be spawned 
+    private float roadBlocksLength = 13.0f; // The zixe of prefab, need to generate a new one
+    private float safeZone = 15.0f; // Zone where prefabs are not being deleted
 
     private int limitOfRoadBlocks = 5; // How many blocks on the road in the same time
 
-    private int lastPrefabIndex = 0;
+    private int lastPrefabIndex = 0; // To randomize???
 
 
     private void Start()
@@ -49,14 +49,15 @@ public class RoadController : MonoBehaviour
             currentTrack = Instantiate(roadBlockPrefabs[prefabIndex]) as GameObject;
         }
 
-        currentTrack.transform.SetParent(transform);
-        currentTrack.transform.position = Vector3.forward * spawnPoint;
+        currentTrack.transform.SetParent(transform); // Prefab  `s transform is going to be a children of roadController`s transform
+        currentTrack.transform.position = Vector3.forward * spawnPoint; // Move the prefab to x inits on z acsis 
 
-        spawnPoint += roadBlocksLength;
+        spawnPoint += roadBlocksLength; // Update the next spawning point
 
         activeRoadBlocks.Add(currentTrack);
     }
 
+    // Always delete the last active prefab, which has been created
     private void DeleteRoadBlock()
     {
         Destroy(activeRoadBlocks[0]);
@@ -82,7 +83,7 @@ public class RoadController : MonoBehaviour
         return randomIndex;
     }
 
-    private void StartRoadBlocks()
+    private void StartRoadBlocks() // Create a x blocks in the start 
     {
         for (int roadBlocksOnTrack = 0; roadBlocksOnTrack < limitOfRoadBlocks; roadBlocksOnTrack++)
         {
@@ -99,7 +100,7 @@ public class RoadController : MonoBehaviour
 
     private bool CanRunRoadEngine()
     {
-        if ((playerTransform.position.z - safeZone) > (spawnPoint - limitOfRoadBlocks * roadBlocksLength))
+        if ((playerTransform.position.z - safeZone) > (spawnPoint - limitOfRoadBlocks * roadBlocksLength)) // when spawn new prefabs
         {
             return true;
         }
