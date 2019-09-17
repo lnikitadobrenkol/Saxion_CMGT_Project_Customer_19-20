@@ -1258,6 +1258,7 @@ GameObject:
   - component: {fileID: 888662562}
   - component: {fileID: 888662561}
   - component: {fileID: 888662560}
+  - component: {fileID: 888662565}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1356,6 +1357,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &888662565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888662559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c030c75500ab6841a42c2a695758128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endRound: {fileID: 2037039147}
 --- !u!1 &910697836
 GameObject:
   m_ObjectHideFlags: 0
@@ -1770,9 +1784,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roadBlockPrefabs:
-  - {fileID: 6167558688693200787, guid: a72123dfe674e754ebc75460094b931a, type: 3}
-  - {fileID: 8163676863180469345, guid: a7a6c1a30d73eaa49960f0069f26c011, type: 3}
-  - {fileID: 3185672080835852221, guid: c1dead018cef4dc40b85ee98df330f65, type: 3}
+  - {fileID: 2647725252661511141, guid: 6d8b4e7546f0ee84aa3c50f5e634ede4, type: 3}
+  - {fileID: 2902179336041436276, guid: d148e0209fcd3af4bae3efecef5d0db5, type: 3}
+  - {fileID: 7846044620334697595, guid: e92a6135e59be344d87342d4ea04d937, type: 3}
+  - {fileID: 3880984299799692759, guid: d054567ba0b2be94a8c55eb4f4739184, type: 3}
 --- !u!4 &1139720496
 Transform:
   m_ObjectHideFlags: 0

@@ -149,29 +149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d8ae192b2cafa64492804b6c8a7a4d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allRoundData:
-  - name: Round Zero
-    timeLimitInSeconds: 10
-    pointsAddedForCorrectAnswer: 10
-    questions:
-    - questionText: Am I Nick?
-      answers:
-      - answerText: Yes
-        isCorrect: 0
-      - answerText: No
-        isCorrect: 1
-    - questionText: Do you love Mali?
-      answers:
-      - answerText: Yes
-        isCorrect: 1
-      - answerText: No
-        isCorrect: 0
-      - answerText: Do not know
-        isCorrect: 1
-    - questionText: What you gonna do?
-      answers:
-      - answerText: Smoke every day
-        isCorrect: 1
 --- !u!4 &907924002
 Transform:
   m_ObjectHideFlags: 0
