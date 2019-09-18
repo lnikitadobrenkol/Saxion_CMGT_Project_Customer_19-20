@@ -20,6 +20,38 @@ public class PlayerMovement : MonoBehaviour
         TurnController();
 
         Gravity();
+
+       /* if (isTurning())
+        {
+            SetSpeed(Random.Range(4, 15));
+            Debug.Log(movementSpeed);
+        }*/
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "setBonusSpeed80")
+        {
+            SetSpeed(8);
+            Debug.Log(movementSpeed);
+        }
+
+        if (other.tag == "setBonusSpeed100")
+        {
+            SetSpeed(10);
+            Debug.Log(movementSpeed);
+        }
+
+        if (other.tag == "setBonusSpeed120")
+        {
+            SetSpeed(12);
+            Debug.Log(movementSpeed);
+        }
+    }
+
+    public void SetSpeed(float speed)
+    {
+        movementSpeed = speed;
     }
 
     private void MoveForward()
@@ -43,5 +75,17 @@ public class PlayerMovement : MonoBehaviour
         }
 
         playerController.Move(moveVector * Time.deltaTime);
+    }
+
+    private bool isTurning()
+    {
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
