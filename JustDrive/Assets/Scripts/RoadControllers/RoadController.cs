@@ -86,7 +86,7 @@ public class RoadController : MonoBehaviour
     {
         for (int roadBlocksOnTrack = 0; roadBlocksOnTrack < limitOfRoadBlocks; roadBlocksOnTrack++)
         {
-            if (roadBlocksOnTrack < 2)
+            if (roadBlocksOnTrack < 5)
             {
                 SpawnRoadBlock(0);
             }
