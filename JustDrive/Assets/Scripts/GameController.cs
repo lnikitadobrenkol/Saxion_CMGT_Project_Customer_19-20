@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,28 +9,30 @@ public class GameController : MonoBehaviour
     public Transform answerButtonParent;
     public GameObject questionDisplay;
     public GameObject roundEndDisplay;
+    public GameObject winDisplay;
+    public GameObject hornyEndDisplay;
+
+    public AudioClip carCrash;
+    AudioSource audioSource;
 
     public Text questionDisplayText;
     public Text distanceDisplayText;
-    public Text timeRemainingDisplayText;
 
     
     public Slider hornySlider;
     public float startingHorny = 50.0f;
     public float currentHorny;
+    public float roundDistance;
 
     private DataController dataContoller;
     private RoundData currentRoundData;
     private QuestionData[] questionPool;
 
     private bool isRoundActive;
-    //private float timeRemaining;
-    public float roundDistance;
     private int questionIndex;
 
     private List<GameObject> answerButtonGameObjects = new List<GameObject>();
 
-    
     void Awake()
     {
         currentHorny = startingHorny;
@@ -39,6 +40,8 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         CloseMessageMenu();
 
         dataContoller = FindObjectOfType<DataController> ();
@@ -47,8 +50,6 @@ public class GameController : MonoBehaviour
 
         roundDistance = currentRoundData.generalDistance;
         UpdateDistanceDisplay();
-        //timeRemaining = currentRoundData.timeLimitInSeconds;
-        //UpdateTimeRemainingDisplay();
 
         questionIndex = 0;
 
@@ -56,54 +57,26 @@ public class GameController : MonoBehaviour
         isRoundActive = true;
     }
 
-    private void ShowQuestion()
+    void Update()
     {
-        RemoveAnswerButtons();
-        QuestionData questionData = questionPool[questionIndex];
-        questionDisplayText.text = questionData.questionText;
-
-        for (int i = 0; i < questionData.answers.Length; i++)
+        if (hornySlider.value == 0)
         {
-            GameObject answerButtonGameObject = answerButtonObjectPool.GetObject();
-            answerButtonGameObject.transform.SetParent(answerButtonParent);
-            answerButtonGameObjects.Add(answerButtonGameObject);
-
-            AnswerButton answerButton = answerButtonGameObject.GetComponent<AnswerButton>();
-            answerButton.Setup(questionData.answers[i]);
+            HornyEnd();
         }
-    }
 
-    private void RemoveAnswerButtons()
-    {
-        while (answerButtonGameObjects.Count > 0)
+        if (isRoundActive)
         {
-            answerButtonObjectPool.ReturnObject(answerButtonGameObjects[0]);
-            answerButtonGameObjects.RemoveAt(0);
+            currentHorny -= 0.05f;
+            hornySlider.value = currentHorny;
+
+            roundDistance -= Time.deltaTime;
+            UpdateDistanceDisplay();
+
+            if (roundDistance <= 0)
+            {
+                Win();
+            }
         }
-    }
-
-    /*
-    private void UpdateTimeRemainingDisplay()
-    {
-        timeRemainingDisplayText.text = "Time: " + Mathf.Round(timeRemaining).ToString();
-    }
-    */
-
-    private void UpdateDistanceDisplay()
-    {
-        distanceDisplayText.text = "Distance: " + Mathf.Round(roundDistance).ToString();
-    }
-
-    private void HornyUp()
-    {
-        currentHorny += 10;
-        hornySlider.value = currentHorny;
-    }
-
-    private void HornyFall()
-    {
-        currentHorny -= 10;
-        hornySlider.value = currentHorny;
     }
 
     public void AnswerButtonClicked(bool isCorrect)
@@ -135,6 +108,24 @@ public class GameController : MonoBehaviour
 
         questionDisplay.SetActive(false);
         roundEndDisplay.SetActive(true);
+
+        audioSource.PlayOneShot(carCrash, 1.0f);
+    }
+
+    public void HornyEnd()
+    {
+        isRoundActive = false;
+
+        questionDisplay.SetActive(false);
+        hornyEndDisplay.SetActive(true);
+    }
+
+    public void Win()
+    {
+        isRoundActive = false;
+
+        questionDisplay.SetActive(false);
+        winDisplay.SetActive(true);
     }
 
     public void ReturnToMenu()
@@ -142,23 +133,46 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene("MenuScreen");
     }
 
-    void Update()
+    private void ShowQuestion()
     {
-        if (hornySlider.value == 0 || roundDistance <= 0.0f)
+        RemoveAnswerButtons();
+        QuestionData questionData = questionPool[questionIndex];
+        questionDisplayText.text = questionData.questionText;
+
+        for (int i = 0; i < questionData.answers.Length; i++)
         {
-            EndRound();
-        }
+            GameObject answerButtonGameObject = answerButtonObjectPool.GetObject();
+            answerButtonGameObject.transform.SetParent(answerButtonParent);
+            answerButtonGameObjects.Add(answerButtonGameObject);
 
-        if (isRoundActive)
+            AnswerButton answerButton = answerButtonGameObject.GetComponent<AnswerButton>();
+            answerButton.Setup(questionData.answers[i]);
+        }
+    }
+
+    private void RemoveAnswerButtons()
+    {
+        while (answerButtonGameObjects.Count > 0)
         {
-            currentHorny -= 0.05f;
-            hornySlider.value = currentHorny;
-
-            roundDistance -= Time.deltaTime;
-            UpdateDistanceDisplay();
-
-            //timeRemaining -= Time.deltaTime;
-            //UpdateTimeRemainingDisplay();
+            answerButtonObjectPool.ReturnObject(answerButtonGameObjects[0]);
+            answerButtonGameObjects.RemoveAt(0);
         }
+    }
+
+    private void UpdateDistanceDisplay()
+    {
+        distanceDisplayText.text = "KM: " + Mathf.Round(roundDistance).ToString();
+    }
+
+    private void HornyUp()
+    {
+        currentHorny += 10;
+        hornySlider.value = currentHorny;
+    }
+
+    private void HornyFall()
+    {
+        currentHorny -= 10;
+        hornySlider.value = currentHorny;
     }
 }
