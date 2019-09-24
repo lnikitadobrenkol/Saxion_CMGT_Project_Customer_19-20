@@ -1919,7 +1919,7 @@ GameObject:
   - component: {fileID: 9186074043110644306}
   - component: {fileID: 4720025805218474405}
   m_Layer: 0
-  m_Name: RoadTrackWithLeftObstacle
+  m_Name: RoadTrackWithBlueLeftObstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3093,7 +3093,7 @@ PrefabInstance:
     - target: {fileID: 143392952177532851, guid: d7158bceee6b64c4984a19a5faa4c05b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.24
+      value: -2.49
       objectReference: {fileID: 0}
     - target: {fileID: 143392952177532851, guid: d7158bceee6b64c4984a19a5faa4c05b,
         type: 3}
@@ -3148,7 +3148,7 @@ PrefabInstance:
     - target: {fileID: 143392952177532851, guid: d7158bceee6b64c4984a19a5faa4c05b,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.50000024
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 143392952177532851, guid: d7158bceee6b64c4984a19a5faa4c05b,
         type: 3}

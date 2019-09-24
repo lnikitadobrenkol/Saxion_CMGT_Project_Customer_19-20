@@ -13,7 +13,6 @@ public class TutorialController : MonoBehaviour
     public GameObject wellDoneText;
     public GameObject roundOneText;
     public GameObject notification;
-    public GameObject hereWegoText;
     public GameObject distanceHint;
     public GameObject hornyHint;
     public GameObject readyText;
@@ -77,13 +76,11 @@ public class TutorialController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             notification.SetActive(false);
-            hereWegoText.SetActive(true);
         }
 
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             notification.SetActive(false);
-            hereWegoText.SetActive(false);
 
             hornyMeter.SetActive(true);
             distance.SetActive(true);

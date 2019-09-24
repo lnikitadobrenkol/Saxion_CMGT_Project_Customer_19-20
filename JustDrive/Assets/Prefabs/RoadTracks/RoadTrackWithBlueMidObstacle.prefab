@@ -1368,7 +1368,7 @@ GameObject:
   - component: {fileID: 267516624936233543}
   - component: {fileID: 6296279665871034218}
   m_Layer: 0
-  m_Name: RoadTrackWithMidObstacle
+  m_Name: RoadTrackWithBlueMidObstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3054,11 +3054,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5489084097761303256}
     m_Modifications:
-    - target: {fileID: -6295915878768181149, guid: d7158bceee6b64c4984a19a5faa4c05b,
-        type: 3}
-      propertyPath: movementSpeed
-      value: -4
-      objectReference: {fileID: 0}
     - target: {fileID: 4009952964352470432, guid: d7158bceee6b64c4984a19a5faa4c05b,
         type: 3}
       propertyPath: m_Name
@@ -3122,12 +3117,22 @@ PrefabInstance:
     - target: {fileID: 143392952177532851, guid: d7158bceee6b64c4984a19a5faa4c05b,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.50000024
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 143392952177532851, guid: d7158bceee6b64c4984a19a5faa4c05b,
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.7000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 143392952177532851, guid: d7158bceee6b64c4984a19a5faa4c05b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -6295915878768181149, guid: d7158bceee6b64c4984a19a5faa4c05b,
+        type: 3}
+      propertyPath: movementSpeed
+      value: -4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7158bceee6b64c4984a19a5faa4c05b, type: 3}
