@@ -29,7 +29,7 @@ public class MessageNotificationController : MonoBehaviour
         isNotificationShown = false;
         isMessageMenuOpen = false;
 
-        InvokeRepeating("ShowNotification", 3.0f, frequencyOfOccurrence); // call the (method, in n seconds, every n seconds) 
+        InvokeRepeating("ShowNotification", 1.0f, frequencyOfOccurrence); // call the (method, in n seconds, every n seconds) 
     }
 
     private void Update()
@@ -83,7 +83,7 @@ public class MessageNotificationController : MonoBehaviour
 
     private bool CanOpenMessageMenu()
     {
-        if (Input.GetKeyDown(KeyCode.R) && isNotificationShown)
+        if (Input.GetKeyDown(KeyCode.R))
         {
             return true;
         } 

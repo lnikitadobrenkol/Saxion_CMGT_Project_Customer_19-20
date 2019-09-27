@@ -13,7 +13,7 @@ public class PlayerDeath : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.point.z > transform.position.z + playerController.radius)
+        if (hit.transform.tag == "CarObstacle")
         {
             endRound.EndRound();
         }

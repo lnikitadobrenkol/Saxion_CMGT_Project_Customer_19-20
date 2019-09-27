@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 85021018416929688}
   m_Layer: 0
   m_Name: RedCarLeftObstacle
-  m_TagString: Untagged
+  m_TagString: CarObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

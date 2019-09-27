@@ -22,32 +22,6 @@ public class PlayerMovement : MonoBehaviour
         Gravity();
     }
 
-    public void SetSpeed(float speed)
-    {
-        movementSpeed = speed;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "setBonusSpeed80")
-        {
-            SetSpeed(8);
-            Debug.Log(movementSpeed);
-        }
-
-        if (other.tag == "setBonusSpeed100")
-        {
-            SetSpeed(10);
-            Debug.Log(movementSpeed);
-        }
-
-        if (other.tag == "setBonusSpeed120")
-        {
-            SetSpeed(12);
-            Debug.Log(movementSpeed);
-        }
-    }
-
     private void MoveForward()
     {
         playerController.Move(Vector3.forward * movementSpeed * Time.deltaTime);

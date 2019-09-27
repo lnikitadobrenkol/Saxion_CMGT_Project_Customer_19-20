@@ -8,12 +8,14 @@ public class GameController : MonoBehaviour
     public SimpleObjectPool answerButtonObjectPool;
     public Transform answerButtonParent;
     public GameObject questionDisplay;
-    public GameObject roundEndDisplay;
-    public GameObject winDisplay;
-    public GameObject hornyEndDisplay;
 
-    public AudioClip carCrash;
-    AudioSource audioSource;
+    public GameObject movementHintText;
+    public GameObject leftArrowHint;
+    public GameObject rightArrowHint;
+    public GameObject notificationHint;
+    public GameObject distanceHint;
+    public GameObject hornyHint;
+    public GameObject finishTutorialText;
 
     public Text questionDisplayText;
     public Text distanceDisplayText;
@@ -33,6 +35,9 @@ public class GameController : MonoBehaviour
 
     private List<GameObject> answerButtonGameObjects = new List<GameObject>();
 
+    static public bool isTutorialShown = false;
+    private bool isNotificationHintShown = false;
+
     void Awake()
     {
         currentHorny = startingHorny;
@@ -40,12 +45,10 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-
         CloseMessageMenu();
 
         dataContoller = FindObjectOfType<DataController> ();
-        currentRoundData = dataContoller.GetCurrentRoundData ();
+        currentRoundData = dataContoller.GetCurrentRoundData();
         questionPool = currentRoundData.questions;
 
         roundDistance = currentRoundData.generalDistance;
@@ -59,6 +62,19 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
+        Tutorial();
+
+        if (isTutorialShown)
+        {
+            movementHintText.SetActive(false);
+            rightArrowHint.SetActive(false);
+            leftArrowHint.SetActive(false);
+            notificationHint.SetActive(false);
+            distanceHint.SetActive(false);
+            hornyHint.SetActive(false);
+            finishTutorialText.SetActive(false);
+        }
+
         if (hornySlider.value == 0)
         {
             HornyEnd();
@@ -66,7 +82,7 @@ public class GameController : MonoBehaviour
 
         if (isRoundActive)
         {
-            currentHorny -= 0.05f;
+            currentHorny -= 0.035f;
             hornySlider.value = currentHorny;
 
             roundDistance -= Time.deltaTime;
@@ -105,27 +121,19 @@ public class GameController : MonoBehaviour
     public void EndRound()
     {
         isRoundActive = false;
-
-        questionDisplay.SetActive(false);
-        roundEndDisplay.SetActive(true);
-
-        audioSource.PlayOneShot(carCrash, 1.0f);
+        SceneManager.LoadScene("RoundEndScreen");
     }
 
     public void HornyEnd()
     {
         isRoundActive = false;
-
-        questionDisplay.SetActive(false);
-        hornyEndDisplay.SetActive(true);
+        SceneManager.LoadScene("HornyEndScreen");
     }
 
     public void Win()
     {
         isRoundActive = false;
-
-        questionDisplay.SetActive(false);
-        winDisplay.SetActive(true);
+        SceneManager.LoadScene("WinScreen");
     }
 
     public void ReturnToMenu()
@@ -174,5 +182,54 @@ public class GameController : MonoBehaviour
     {
         currentHorny -= 10;
         hornySlider.value = currentHorny;
+    }
+
+    private void Tutorial()
+    {
+        MovementHint();
+    }
+
+    private void MovementHint()
+    {
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            leftArrowHint.SetActive(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            rightArrowHint.SetActive(false);
+        }
+
+        if (!leftArrowHint.activeSelf && !rightArrowHint.activeSelf)
+        {
+            movementHintText.SetActive(false);
+            rightArrowHint.SetActive(false);
+            leftArrowHint.SetActive(false);
+
+            if(!isNotificationHintShown)
+            {
+                notificationHint.SetActive(true);
+                isNotificationHintShown = true; ;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                distanceHint.SetActive(true);
+                hornyHint.SetActive(true);
+
+                finishTutorialText.SetActive(true);
+            }
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                notificationHint.SetActive(false);
+            }
+
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                isTutorialShown = true;
+            }
+        }
     }
 }

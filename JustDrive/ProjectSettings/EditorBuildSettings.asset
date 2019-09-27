@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tutorial.unity
     guid: 301aa7f31e4a5984bafe2abc2fa4d489
   - enabled: 1
@@ -17,13 +17,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: b4756f0753a481542ac5925fe439583e
+  - enabled: 1
+    path: Assets/Scenes/RoundEndScreen.unity
+    guid: bf3c404cb0bfada43a064fad19b5a3be
+  - enabled: 1
+    path: Assets/Scenes/HornyEndScreen.unity
+    guid: bc0c837729bbd30499307effe3044653
+  - enabled: 1
+    path: Assets/Scenes/WinScreen.unity
+    guid: 6bf72c789583867408b5d6068b9ae3ac
   - enabled: 0
     path: 
-    guid: 3329970cb5e7b324ba9af03892ab842a
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: 
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: 
-    guid: b6095c8685063184385e7f90999b29b3
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
