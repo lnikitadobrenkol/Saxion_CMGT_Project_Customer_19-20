@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7015415205069430650}
   - component: {fileID: 8850183098411581725}
   - component: {fileID: 9119278786423201113}
+  - component: {fileID: 6386988762497906589}
   m_Layer: 5
   m_Name: AnswerButton
   m_TagString: Untagged
@@ -147,6 +148,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   answerText: {fileID: 3311167498384537932}
+--- !u!114 &6386988762497906589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3599871281684296469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbd62aef2756f384280ba34679ba1312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: af8673ac8f164904496e17954c5b5b32, type: 3}
 --- !u!1 &7741187310971140417
 GameObject:
   m_ObjectHideFlags: 0

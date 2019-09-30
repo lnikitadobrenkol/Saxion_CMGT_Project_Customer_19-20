@@ -26,6 +26,9 @@ public class GameController : MonoBehaviour
     public float currentHorny;
     public float roundDistance;
 
+    public AudioClip hornySound;
+    private AudioSource source { get { return GetComponent<AudioSource>(); } }
+
     private DataController dataContoller;
     private RoundData currentRoundData;
     private QuestionData[] questionPool;
@@ -37,6 +40,7 @@ public class GameController : MonoBehaviour
 
     static public bool isTutorialShown = false;
     private bool isNotificationHintShown = false;
+    private bool isHornySoundPLayed = false;
 
     void Awake()
     {
@@ -45,6 +49,11 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        gameObject.AddComponent<AudioSource>();
+
+        source.clip = hornySound;
+        source.playOnAwake = false;
+
         CloseMessageMenu();
 
         dataContoller = FindObjectOfType<DataController> ();
@@ -73,6 +82,12 @@ public class GameController : MonoBehaviour
             distanceHint.SetActive(false);
             hornyHint.SetActive(false);
             finishTutorialText.SetActive(false);
+        }
+
+        if (hornySlider.value <= 25 && !isHornySoundPLayed)
+        {
+            source.PlayOneShot(hornySound);
+            isHornySoundPLayed = true;
         }
 
         if (hornySlider.value == 0)
@@ -176,6 +191,8 @@ public class GameController : MonoBehaviour
     {
         currentHorny += 10;
         hornySlider.value = currentHorny;
+
+        isHornySoundPLayed = false;
     }
 
     private void HornyFall()
