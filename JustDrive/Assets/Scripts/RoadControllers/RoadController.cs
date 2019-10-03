@@ -13,7 +13,7 @@ public class RoadController : MonoBehaviour
     private float roadBlocksLength = 13.0f; // The zixe of prefab, need to generate a new one
     private float safeZone = 15.0f; // Zone where prefabs are not being deleted
 
-    private int limitOfRoadBlocks = 5; // How many blocks on the road in the same time
+    private int limitOfRoadBlocks = 15; // How many blocks on the road in the same time
 
     private int lastPrefabIndex = 0; // To randomize???
 

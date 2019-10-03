@@ -466,7 +466,7 @@ Transform:
   m_GameObject: {fileID: 1310811207242074551}
   m_LocalRotation: {x: -0, y: 0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.04, z: 6}
-  m_LocalScale: {x: 2.5, y: 100, z: 2.5}
+  m_LocalScale: {x: 5, y: 100, z: 2.5}
   m_Children: []
   m_Father: {fileID: 105424997604536080}
   m_RootOrder: 1
@@ -1196,7 +1196,7 @@ GameObject:
   - component: {fileID: 638565302616506923}
   - component: {fileID: 1894696677406666123}
   - component: {fileID: 4051515602461839062}
-  - component: {fileID: 488271984681894839}
+  - component: {fileID: 5738077871431313144}
   m_Layer: 0
   m_Name: RailingRight
   m_TagString: Untagged
@@ -1264,8 +1264,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &488271984681894839
-MeshCollider:
+--- !u!65 &5738077871431313144
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1274,10 +1274,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 5302568919011541938, guid: 9e1ecf6098444f24389c90e2b3468f4c, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.16006963, y: 1.4910657, z: 2.0012143}
+  m_Center: {x: 0, y: 0.59820116, z: -0.000000073359566}
 --- !u!1 &3742206649963561885
 GameObject:
   m_ObjectHideFlags: 0
@@ -1319,7 +1318,7 @@ GameObject:
   - component: {fileID: 3002303145640646957}
   - component: {fileID: 9218927665713369062}
   - component: {fileID: 8602879369397129437}
-  - component: {fileID: 2029450207883203891}
+  - component: {fileID: 5808209889137329351}
   m_Layer: 0
   m_Name: RailingLeft
   m_TagString: Untagged
@@ -1387,8 +1386,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2029450207883203891
-MeshCollider:
+--- !u!65 &5808209889137329351
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1397,10 +1396,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 5302568919011541938, guid: 9e1ecf6098444f24389c90e2b3468f4c, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.16006963, y: 1.4910657, z: 2.0012143}
+  m_Center: {x: 0, y: 0.59820116, z: -0.000000073359566}
 --- !u!1 &3997800433766869092
 GameObject:
   m_ObjectHideFlags: 0

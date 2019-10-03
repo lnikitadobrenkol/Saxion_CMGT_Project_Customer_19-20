@@ -97,7 +97,7 @@ public class GameController : MonoBehaviour
 
         if (isRoundActive)
         {
-            currentHorny -= 0.035f;
+            currentHorny -= 0.012f;
             hornySlider.value = currentHorny;
 
             roundDistance -= Time.deltaTime;
